@@ -8,7 +8,7 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.transaction
 
 object DatabaseFactory {
-    private val dbUrl = "jdbc:postgresql://@db:5432/yahoo"
+    private val dbUrl = "jdbc:postgresql://db:5432/yahoo"
     private val dbUser = "postgres"
     private val dbPassword = "secret"
 
@@ -22,7 +22,7 @@ object DatabaseFactory {
         config.jdbcUrl = dbUrl
         config.username = dbUser
         config.password = dbPassword
-        config.maximumPoolSize = 3
+        config.maximumPoolSize = 10
         config.isAutoCommit = false
         config.transactionIsolation = "TRANSACTION_REPEATABLE_READ"
         config.validate()
