@@ -11,10 +11,8 @@ data class BidCreatePayload(
     val bid: Bid? = null) : BasePayload()
 
 class BidCreateMutation : BaseMutation<BidCreateInput, BidCreatePayload>(payloadForError = BidCreatePayload()) {
-    fun bidCreate(input: BidCreateInput): BidCreatePayload {
-        return tryResolve(input) {
-            throw NotImplementedError()
-            BidCreatePayload(bid = Bid(1, "assa"))
-        }
+    fun bidCreate(input: BidCreateInput): BidCreatePayload = tryResolve {
+        throw NotImplementedError()
+        BidCreatePayload(bid = Bid(1, "assa"))
     }
 }
