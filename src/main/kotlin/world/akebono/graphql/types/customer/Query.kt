@@ -5,6 +5,8 @@ import world.akebono.graphql.types.common.PaginatedListFilter
 import world.akebono.graphql.types.common.PaginatedListSort
 import world.akebono.graphql.types.common.filter.IdFilter
 import world.akebono.graphql.types.common.sort.IdSort
+import world.akebono.models.User
+import world.akebono.service.UserService
 
 class BidsPaginatedListFilter(val id: IdFilter<Bid>? = null) : PaginatedListFilter<Bid>() {
     override fun apply(items: List<Bid>): List<Bid> {
@@ -35,6 +37,10 @@ class BidsPaginatedList(
     offset = offset)
 
 class Query {
+    suspend fun user(id: Int): User? {
+        return UserService().getUserById(id)
+    }
+
     fun bid(id: Int): Bid? {
         return Bid(1, "assa")
     }
